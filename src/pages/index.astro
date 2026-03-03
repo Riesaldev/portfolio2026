@@ -1,1452 +1,29 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import HeroParallax from "../components/hero/HeroParallax.astro";
+import HeroContent from "../components/hero/HeroContent.astro";
+import HeroNightStyles from "../components/hero/HeroNightStyles.astro";
+import About from "../components/sections/About.astro";
+import Journey from "../components/sections/Journey.astro";
+import Skills from "../components/sections/Skills.astro";
+import Contact from "../components/sections/Contact.astro";
+import NoiseTexture from "../components/ui/NoiseTexture.astro";
 ---
 
 <Layout title="Maria Isabel Begueri | Hospitality Professional">
-  <!-- ═══════════════════════════════════════
-      HERO SECTION
-  ═══════════════════════════════════════ -->
+  <!-- Hero (Paso H: noise layer) -->
   <section id="home" class="relative min-h-screen overflow-hidden">
-    <!-- Parallax Background -->
-    <div id="parallax-container" class="absolute inset-0">
-      <div
-        class="parallax-layer absolute inset-0"
-        data-speed="0.1"
-        style="background: linear-gradient(180deg, #FAE4D8 0%, #F8C8B0 30%, #E8A889 60%, #D4847A 100%);"
-      >
-      </div>
-
-      <div
-        class="parallax-layer absolute"
-        data-speed="0.15"
-        style="top:15%;left:50%;transform:translateX(-50%);"
-      >
-        <div
-          class="w-32 h-32 md:w-48 md:h-48 rounded-full opacity-80"
-          style="background:radial-gradient(circle,#FFF5E6,#FFD9B3);filter:blur(4px);"
-        >
-        </div>
-      </div>
-
-      <div
-        class="parallax-layer absolute bottom-0 left-0 right-0 h-[60%]"
-        data-speed="0.2"
-      >
-        <svg
-          viewBox="0 0 1440 400"
-          preserveAspectRatio="none"
-          class="w-full h-full"
-        >
-          <path
-            fill="#C9907A"
-            d="M0,200 L100,180 L200,220 L350,150 L450,190 L550,130 L700,170 L850,110 L950,160 L1100,120 L1200,170 L1350,140 L1440,180 L1440,400 L0,400 Z"
-          ></path>
-        </svg>
-      </div>
-
-      <div
-        class="parallax-layer absolute bottom-0 left-0 right-0 h-[50%]"
-        data-speed="0.35"
-      >
-        <svg
-          viewBox="0 0 1440 350"
-          preserveAspectRatio="none"
-          class="w-full h-full"
-        >
-          <path
-            fill="#A66B5A"
-            d="M0,250 L100,220 L180,240 L220,220 L280,240 L280,120 L320,120 L320,100 L380,100 L380,120 L420,120 L420,240 L500,220 L600,260 L650,240 L700,80 L720,80 L720,60 L760,60 L760,80 L780,80 L780,240 L850,220 L950,250 L1050,200 L1100,220 L1150,180 L1200,210 L1300,190 L1400,230 L1440,220 L1440,350 L0,350 Z"
-          ></path>
-          <rect
-            fill="#FFE4C4"
-            x="300"
-            y="140"
-            width="15"
-            height="20"
-            opacity="0.7"></rect>
-          <rect
-            fill="#FFE4C4"
-            x="340"
-            y="140"
-            width="15"
-            height="20"
-            opacity="0.7"></rect>
-          <rect
-            fill="#FFE4C4"
-            x="720"
-            y="100"
-            width="15"
-            height="20"
-            opacity="0.7"></rect>
-          <rect
-            fill="#FFE4C4"
-            x="750"
-            y="100"
-            width="15"
-            height="20"
-            opacity="0.7"></rect>
-        </svg>
-      </div>
-
-      <div
-        class="parallax-layer absolute bottom-0 left-0 right-0 h-[30%]"
-        data-speed="0.5"
-      >
-        <svg
-          viewBox="0 0 1440 240"
-          preserveAspectRatio="none"
-          class="w-full h-full"
-        >
-          <path
-            fill="#8B5A4A"
-            d="M0,160 L200,120 L400,150 L700,100 L900,140 L1200,110 L1440,140 L1440,240 L0,240 Z"
-          ></path>
-        </svg>
-      </div>
-
-      <div
-        class="parallax-layer absolute bottom-0 left-0 right-0 h-[20%]"
-        data-speed="0.7"
-      >
-        <svg
-          viewBox="0 0 1440 180"
-          preserveAspectRatio="none"
-          class="w-full h-full"
-        >
-          <path
-            fill="#5C3D2E"
-            d="M0,120 L300,90 L600,110 L900,80 L1200,100 L1440,90 L1440,180 L0,180 Z"
-          ></path>
-        </svg>
-      </div>
-
-      <div
-        class="absolute bottom-0 left-0 right-0 h-40"
-        style="background:linear-gradient(to top, #FDFBF7, transparent);"
-      >
-      </div>
-    </div>
-
-    <!-- Hero Content -->
-    <div
-      class="relative z-10 min-h-screen flex items-center justify-center px-6"
-    >
-      <div class="text-center max-w-3xl mx-auto" style="padding-top:5rem;">
-        <p
-          class="font-accent text-lg md:text-xl mb-4 opacity-0 hero-animate"
-          style="animation-delay:0.2s;color:#7A4E38;text-shadow:0 1px 3px rgba(255,255,255,0.6);"
-          data-en="Welcome to my world"
-          data-sv="Välkommen till min värld"
-        >
-          Welcome to my world
-        </p>
-
-        <h1
-          class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 opacity-0 hero-animate"
-          style="animation-delay:0.4s;color:#2D2D2D;text-shadow:0 2px 12px rgba(255,255,255,0.5);"
-        >
-          <span class="lang-text" data-en="Hi, I'm" data-sv="Hej, jag är"
-            >Hi, I'm</span
-          >
-          <span class="gradient-text block mt-1">Maria Isabel</span>
-        </h1>
-
-        <p
-          class="text-lg md:text-2xl mb-10 opacity-0 hero-animate font-medium"
-          style="animation-delay:0.6s;color:#3D3D3D;text-shadow:0 1px 6px rgba(255,255,255,0.5);"
-        >
-          <span
-            class="lang-text"
-            data-en="Creating warm welcomes & exceptional experiences"
-            data-sv="Skapar varma välkomnanden & exceptionella upplevelser"
-          >
-            Creating warm welcomes &amp; exceptional experiences
-          </span>
-        </p>
-
-        <div
-          class="flex flex-col sm:flex-row items-center justify-center gap-4 opacity-0 hero-animate"
-          style="animation-delay:0.8s;"
-        >
-          <a
-            href="#about"
-            class="btn-primary lang-text"
-            data-en="Discover My Story"
-            data-sv="Upptäck Min Historia">Discover My Story</a
-          >
-          <a
-            href="#contact"
-            class="btn-secondary lang-text"
-            data-en="Get In Touch"
-            data-sv="Kontakta Mig">Get In Touch</a
-          >
-        </div>
-
-        <!-- Scroll indicator -->
-        <div
-          class="absolute bottom-10 left-1/2 -translate-x-1/2 opacity-0 hero-animate"
-          style="animation-delay:1.2s;"
-        >
-          <div
-            class="w-6 h-10 border-2 border-white/60 rounded-full flex justify-center"
-          >
-            <div class="w-1 h-3 bg-white/60 rounded-full mt-2 animate-bounce">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <HeroParallax />
+    <HeroContent />
+    <HeroNightStyles />
+    <NoiseTexture opacity={0.055} blendMode="overlay" />
   </section>
 
-  <!-- ═══════════════════════════════════════
-      ABOUT SECTION
-  ═══════════════════════════════════════ -->
-  <section
-    id="about"
-    class="py-32 dark:bg-gray-900 transition-colors justify-center items-center flex min-h-screen m-4 p-4"
-    style="background-color:var(--color-warm-white);"
-  >
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="reveal-section grid md:grid-cols-2 gap-16 items-center">
-        <!-- Image column -->
-        <div class="relative">
-          <!-- Decorative blobs -->
-          <div
-            class="absolute -top-10 -left-10 w-40 h-40 rounded-full opacity-40 blur-3xl"
-            style="background:var(--color-coral-light);"
-          >
-          </div>
-          <div
-            class="absolute -bottom-10 -right-10 w-48 h-48 rounded-full opacity-30 blur-3xl"
-            style="background:var(--color-gold-light);"
-          >
-          </div>
-
-          <!-- Photo -->
-          <div class="relative rounded-3xl overflow-hidden shadow-2xl">
-            <img
-              src="https://ext.same-assets.com/94436006/1303403810.png"
-              alt="Maria Isabel Begueri"
-              class="w-full h-auto object-cover"
-              loading="lazy"
-            />
-            <div
-              class="absolute inset-0"
-              style="background:linear-gradient(to top, rgba(224,122,95,0.15), transparent);"
-            >
-            </div>
-          </div>
-
-          <!-- Floating card: Experience -->
-          <div
-            class="glass absolute right-2 md:-right-10 top-1/4 rounded-2xl p-4 shadow-xl animate-float flex flex-col items-center gap-1"
-            style="animation-delay:0s;"
-          >
-            <p
-              class="text-3xl font-bold items-center"
-              style="color:var(--color-coral);"
-            >
-              15+
-            </p>
-            <p
-              class="text-sm font-medium mt-0.5 lang-text px-2 text-center"
-              style="color:var(--color-charcoal);"
-              data-en="Years Experience"
-              data-sv="Års Erfarenhet"
-            >
-              Years Experience
-            </p>
-          </div>
-
-          <!-- Floating card: Languages -->
-          <div
-            class="glass absolute left-2 md:-left-10 bottom-1/4 rounded-2xl p-4 shadow-xl animate-float flex flex-col items-center gap-1"
-            style="animation-delay:0.8s;"
-          >
-            <p class="text-3xl font-bold" style="color:var(--color-gold);">
-              5+
-            </p>
-            <p
-              class="text-sm font-medium mt-0.5 lang-text px-2 text-center"
-              style="color:var(--color-charcoal);"
-              data-en="Languages"
-              data-sv="Språk"
-            >
-              Languages
-            </p>
-          </div>
-        </div>
-
-        <!-- Text column -->
-        <div class="space-y-6 h-full flex flex-col justify-center gap-6">
-          <p
-            class="section-subtitle lang-text"
-            data-en="Let me introduce myself"
-            data-sv="Låt mig presentera mig"
-          >
-            Let me introduce myself
-          </p>
-          <h2
-            class="section-title dark:text-white lang-text"
-            data-en="More Than a Receptionist"
-            data-sv="Mer Än En Receptionist"
-          >
-            More Than a Receptionist
-          </h2>
-
-          <div class="space-y-5 mt-6">
-            <p
-              class="text-base md:text-lg leading-relaxed dark:text-gray-300 lang-text"
-              style="color:var(--color-charcoal-light);"
-              data-en="I believe that every interaction is an opportunity to create a meaningful connection. With over 15 years in hospitality and customer service, I've learned that the key to excellence isn't just what you do — it's how you make people feel."
-              data-sv="Jag tror att varje interaktion är en möjlighet att skapa en meningsfull koppling. Med över 15 års erfarenhet inom gästfrihet och kundservice har jag lärt mig att nyckeln till excellens inte bara är vad du gör — det är hur du får människor att känna sig."
-            >
-              I believe that every interaction is an opportunity to create a
-              meaningful connection. With over 15 years in hospitality and
-              customer service, I've learned that the key to excellence isn't
-              just what you do — it's how you make people feel.
-            </p>
-            <p
-              class="text-base md:text-lg leading-relaxed dark:text-gray-300 lang-text"
-              style="color:var(--color-charcoal-light);"
-              data-en="I'm a curious learner, a natural problem-solver, and someone who finds genuine joy in helping others. Whether it's welcoming guests to a hotel, managing car rental reservations, or supporting a team, I bring warmth, efficiency, and a smile to everything I do."
-              data-sv="Jag är en nyfiken lärare, en naturlig problemlösare och någon som finner äkta glädje i att hjälpa andra. Oavsett om det handlar om att välkomna gäster till ett hotell, hantera biluthyrningsreservationer eller stödja ett team, går jag in med värme, effektivitet och ett leende i allt jag gör."
-            >
-              I'm a curious learner, a natural problem-solver, and someone who
-              finds genuine joy in helping others.
-            </p>
-          </div>
-
-          <!-- Values grid -->
-          <div class="grid grid-cols-2 gap-6 mt-8">
-            <div class="flex items-center gap-3">
-              <div
-                class="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
-                style="background:var(--color-coral-light);"
-              >
-                <svg
-                  class="w-5 h-5"
-                  style="color:var(--color-coral-dark);"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                  ></path>
-                </svg>
-              </div>
-              <span
-                class="font-semibold text-sm dark:text-gray-200 lang-text"
-                style="color:var(--color-charcoal);"
-                data-en="Empathetic"
-                data-sv="Empatisk">Empathetic</span
-              >
-            </div>
-
-            <div class="flex items-center gap-3">
-              <div
-                class="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
-                style="background:var(--color-gold-light);"
-              >
-                <svg
-                  class="w-5 h-5"
-                  style="color:var(--color-terracotta);"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                </svg>
-              </div>
-              <span
-                class="font-semibold text-sm dark:text-gray-200 lang-text"
-                style="color:var(--color-charcoal);"
-                data-en="Proactive"
-                data-sv="Proaktiv">Proactive</span
-              >
-            </div>
-
-            <div class="flex items-center gap-3">
-              <div
-                class="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
-                style="background:rgba(139,157,131,0.2);"
-              >
-                <svg
-                  class="w-5 h-5"
-                  style="color:var(--color-sage);"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"
-                  ></path>
-                </svg>
-              </div>
-              <span
-                class="font-semibold text-sm dark:text-gray-200 lang-text"
-                style="color:var(--color-charcoal);"
-                data-en="Team Player"
-                data-sv="Lagspelåre">Team Player</span
-              >
-            </div>
-
-            <div class="flex items-center gap-3">
-              <div
-                class="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
-                style="background:var(--color-rose-light);"
-              >
-                <svg
-                  class="w-5 h-5"
-                  style="color:var(--color-terracotta);"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-              </div>
-              <span
-                class="font-semibold text-sm dark:text-gray-200 lang-text"
-                style="color:var(--color-charcoal);"
-                data-en="Detail-Oriented"
-                data-sv="Detaljorienterad">Detail-Oriented</span
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════
-      JOURNEY / TIMELINE SECTION
-  ═══════════════════════════════════════ -->
-  <section
-    id="journey"
-    class="py-32 dark:from-gray-800 dark:to-gray-900 transition-colors flex justify-center items-center m-4 p-4 min-h-screen"
-    style="background:linear-gradient(to bottom, var(--color-cream), var(--color-warm-white));"
-  >
-    <div class="max-w-5xl mx-auto px-6">
-      <div class="text-center mb-16 reveal-section">
-        <p
-          class="section-subtitle lang-text"
-          data-en="My Professional Path"
-          data-sv="Min Professionella Väg"
-        >
-          My Professional Path
-        </p>
-        <h2
-          class="section-title dark:text-white lang-text"
-          data-en="A Journey of Growth"
-          data-sv="En Resa Av Tillväxt"
-        >
-          A Journey of Growth
-        </h2>
-      </div>
-
-      <div class="relative stagger-cards mt-6">
-        <!-- Vertical line (desktop) -->
-        <div
-          class="absolute left-1/2 top-0 bottom-0 w-0.5 -translate-x-1/2 hidden md:block"
-          style="background:linear-gradient(to bottom, var(--color-coral), var(--color-gold), var(--color-sage));"
-        >
-        </div>
-
-        <div class="space-y-12">
-          <!-- SIXT — left -->
-          <div
-            class="stagger-item relative flex flex-col md:flex-row items-start md:items-center gap-6"
-          >
-            <div class="w-full md:w-1/2 md:pr-12 md:text-right">
-              <div class="card p-6">
-                <span
-                  class="badge mb-3"
-                  style="background:var(--color-coral-light);color:var(--color-coral-dark);"
-                  >2020 – Present</span
-                >
-                <h3
-                  class="text-xl font-bold mb-1 dark:text-white lang-text"
-                  style="color:var(--color-charcoal);"
-                  data-en="Rental Agent"
-                  data-sv="Uthyrningsagent"
-                >
-                  Rental Agent
-                </h3>
-                <p
-                  class="font-semibold text-sm mb-2"
-                  style="color:var(--color-coral);"
-                >
-                  SIXT Rent A Car
-                </p>
-                <p
-                  class="text-sm leading-relaxed dark:text-gray-300 lang-text"
-                  style="color:var(--color-charcoal-light);"
-                  data-en="Managing reservations, customer service, fleet administration, and sales in a fast-paced environment."
-                  data-sv="Hanterar reservationer, kundservice, flottadministration och försäljning i en snabb miljö."
-                >
-                  Managing reservations, customer service, fleet administration,
-                  and sales in a fast-paced environment.
-                </p>
-              </div>
-            </div>
-            <!-- Dot -->
-            <div class="timeline-dot" style="background:var(--color-coral);">
-            </div>
-            <div class="hidden md:block md:w-1/2"></div>
-          </div>
-
-          <!-- Europcar — right -->
-          <div
-            class="stagger-item relative flex flex-col md:flex-row items-start md:items-center gap-6"
-          >
-            <div class="hidden md:block md:w-1/2"></div>
-            <div class="timeline-dot" style="background:var(--color-gold);">
-            </div>
-            <div class="w-full md:w-1/2 md:pl-12">
-              <div class="card p-6">
-                <span
-                  class="badge mb-3"
-                  style="background:var(--color-gold-light);color:var(--color-terracotta);"
-                  >2015 – 2020</span
-                >
-                <h3
-                  class="text-xl font-bold mb-1 dark:text-white lang-text"
-                  style="color:var(--color-charcoal);"
-                  data-en="Branch Manager"
-                  data-sv="Filialchef"
-                >
-                  Branch Manager
-                </h3>
-                <p
-                  class="font-semibold text-sm mb-2"
-                  style="color:var(--color-coral);"
-                >
-                  Europcar
-                </p>
-                <p
-                  class="text-sm leading-relaxed dark:text-gray-300 lang-text"
-                  style="color:var(--color-charcoal-light);"
-                  data-en="Led a team, managed operations, and achieved consistent customer satisfaction scores above 95%."
-                  data-sv="Ledde ett team, hanterade verksamheten och uppnådde konstant kundnöjdhet över 95%."
-                >
-                  Led a team, managed operations, and achieved consistent
-                  customer satisfaction scores above 95%.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Quironsalud — left -->
-          <div
-            class="stagger-item relative flex flex-col md:flex-row items-start md:items-center gap-6"
-          >
-            <div class="w-full md:w-1/2 md:pr-12 md:text-right">
-              <div class="card p-6">
-                <span class="badge mb-3 bg-fuchsia-200 text-terracotta">
-                  2012 – 2015</span
-                >
-                <h3
-                  class="text-xl
-                  font-bold
-                  mb-1
-                  lang-text
-                  text-charcoal"
-                  data-en="Administrative Receptionist"
-                  data-sv="Administrativ Receptionist"
-                >
-                  Administrative Receptionist
-                </h3>
-                <p
-                  class="font-semibold text-sm mb-2"
-                  style="color:var(--color-coral);"
-                >
-                  Quironsalud
-                </p>
-                <p
-                  class="text-sm leading-relaxed dark:text-gray-300 lang-text"
-                  style="color:var(--color-charcoal-light);"
-                  data-en="Managed patient reception, appointment scheduling, and administrative support in healthcare setting."
-                  data-sv="Hanterade patientmottagning, tidsbokning och administrativt stöd i vårdmiljö."
-                >
-                  Managed patient reception, appointment scheduling, and
-                  administrative support in healthcare setting.
-                </p>
-              </div>
-            </div>
-            <div class="timeline-dot bg-fuchsia-200"></div>
-            <div class="hidden md:block md:w-1/2"></div>
-          </div>
-
-          <!-- Air Europa — right -->
-          <div
-            class="stagger-item relative flex flex-col md:flex-row items-start md:items-center gap-6"
-          >
-            <div class="hidden md:block md:w-1/2"></div>
-            <div class="timeline-dot" style="background:var(--color-rose);">
-            </div>
-            <div class="w-full md:w-1/2 md:pl-12">
-              <div class="card p-6">
-                <span
-                  class="badge mb-3"
-                  style="background:var(--color-rose-light);color:var(--color-terracotta);"
-                  >2008 – 2012</span
-                >
-                <h3
-                  class="text-xl font-bold mb-1 dark:text-white lang-text"
-                  style="color:var(--color-charcoal);"
-                  data-en="Customer Service Agent"
-                  data-sv="Kundserviceagent"
-                >
-                  Customer Service Agent
-                </h3>
-                <p
-                  class="font-semibold text-sm mb-2"
-                  style="color:var(--color-coral);"
-                >
-                  Air Europa
-                </p>
-                <p
-                  class="text-sm leading-relaxed dark:text-gray-300 lang-text"
-                  style="color:var(--color-charcoal-light);"
-                  data-en="Provided multilingual customer support, handled reservations, and resolved travel-related inquiries."
-                  data-sv="Gav flerspråkig kundsupport, hanterade reservationer och löste reserelaterade frågor."
-                >
-                  Provided multilingual customer support, handled reservations,
-                  and resolved travel-related inquiries.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════
-      SKILLS SECTION
-  ═══════════════════════════════════════ -->
-  <section
-    id="skills"
-    class="dark:bg-gray-900 transition-colors flex justify-center items-center min-h-screen m-4 p-4 bg-warm-white"
-    style="background-color:var(--color-warm-white);"
-  >
-    <div class="max-w-5xl mx-auto px-6 flex flex-col gap-6">
-      <div class="text-center mb-16 reveal-section">
-        <p
-          class="section-subtitle lang-text"
-          data-en="What I Bring"
-          data-sv="Vad Jag Bidrar Med"
-        >
-          What I Bring
-        </p>
-        <h2
-          class="section-title dark:text-white lang-text"
-          data-en="Skills & Expertise"
-          data-sv="Kompetens & Expertis"
-        >
-          Skills &amp; Expertise
-        </h2>
-      </div>
-
-      <div class="space-y-12 flex flex-col gap-12 mb-6">
-        <div class="grid md:grid-cols-2 gap-14 reveal-section">
-          <!-- Languages -->
-          <div class="reveal-section flex flex-col gap-6 mb-6">
-            <div class="flex items-center gap-6 mb-8">
-              <div
-                class="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
-                style="background:var(--color-coral);"
-              >
-                <svg
-                  class="w-5 h-5 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"
-                  ></path>
-                </svg>
-              </div>
-              <h3
-                class="text-xl font-bold dark:text-white lang-text mt-6w"
-                style="color:var(--color-charcoal);"
-                data-en="Languages"
-                data-sv="Språk"
-              >
-                Languages
-              </h3>
-            </div>
-
-            <div class="space-y-5 mt-6 flex flex-col gap-6">
-              <div>
-                <div class="flex justify-between mb-2">
-                  <span
-                    class="text-sm font-semibold dark:text-gray-300 lang-text"
-                    style="color:var(--color-charcoal);"
-                    data-en="Spanish (Native)"
-                    data-sv="Spanska (Modersmål)">Spanish (Native)</span
-                  >
-                  <span
-                    class="text-sm font-bold"
-                    style="color:var(--color-coral);">100%</span
-                  >
-                </div>
-                <div class="skill-bar-track">
-                  <div
-                    class="skill-bar-fill skill-progress"
-                    style="background:linear-gradient(to right,var(--color-coral),var(--color-terracotta));"
-                    data-width="100%"
-                  >
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <div class="flex justify-between mb-2">
-                  <span
-                    class="text-sm font-semibold dark:text-gray-300 lang-text"
-                    style="color:var(--color-charcoal);"
-                    data-en="Catalan (Native)"
-                    data-sv="Katalanska (Modersmål)">Catalan (Native)</span
-                  >
-                  <span
-                    class="text-sm font-bold"
-                    style="color:var(--color-coral);">100%</span
-                  >
-                </div>
-                <div class="skill-bar-track">
-                  <div
-                    class="skill-bar-fill skill-progress"
-                    style="background:linear-gradient(to right,var(--color-coral),var(--color-terracotta));"
-                    data-width="100%"
-                  >
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <div class="flex justify-between mb-2">
-                  <span
-                    class="text-sm font-semibold dark:text-gray-300 lang-text"
-                    style="color:var(--color-charcoal);"
-                    data-en="English (Fluent)"
-                    data-sv="Engelska (Flytande)">English (Fluent)</span
-                  >
-                  <span
-                    class="text-sm font-bold"
-                    style="color:var(--color-coral);">92%</span
-                  >
-                </div>
-                <div class="skill-bar-track">
-                  <div
-                    class="skill-bar-fill skill-progress"
-                    style="background:linear-gradient(to right,var(--color-gold),var(--color-coral));"
-                    data-width="92%"
-                  >
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <div class="flex justify-between mb-2">
-                  <span
-                    class="text-sm font-semibold dark:text-gray-300 lang-text"
-                    style="color:var(--color-charcoal);"
-                    data-en="German (Advanced)"
-                    data-sv="Tyska (Avancerad)">German (Advanced)</span
-                  >
-                  <span
-                    class="text-sm font-bold"
-                    style="color:var(--color-coral);">92%</span
-                  >
-                </div>
-                <div class="skill-bar-track">
-                  <div
-                    class="skill-bar-fill skill-progress"
-                    style="background:linear-gradient(to right,var(--color-gold),var(--color-coral));"
-                    data-width="92%"
-                  >
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <div class="flex justify-between mb-2">
-                  <span
-                    class="text-sm font-semibold dark:text-gray-300 lang-text"
-                    style="color:var(--color-charcoal);"
-                    data-en="French (Intermediate)"
-                    data-sv="Franska (Medel)">French (Intermediate)</span
-                  >
-                  <span
-                    class="text-sm font-bold"
-                    style="color:var(--color-coral);">65%</span
-                  >
-                </div>
-                <div class="skill-bar-track">
-                  <div
-                    class="skill-bar-fill skill-progress"
-                    style="background:linear-gradient(to right,var(--color-sage),var(--color-gold));"
-                    data-width="65%"
-                  >
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <div class="flex justify-between mb-2">
-                  <span
-                    class="text-sm font-semibold dark:text-gray-300 lang-text"
-                    style="color:var(--color-charcoal);"
-                    data-en="Swedish (Basic)"
-                    data-sv="Svenska (Grundläggande)">Swedish (Basic)</span
-                  >
-                  <span
-                    class="text-sm font-bold"
-                    style="color:var(--color-coral);">15%</span
-                  >
-                </div>
-                <div class="skill-bar-track">
-                  <div
-                    class="skill-bar-fill skill-progress"
-                    style="background:linear-gradient(to right,var(--color-sage),var(--color-gold));"
-                    data-width="15%"
-                  >
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Professional Tools -->
-          <div class="reveal-section flex flex-col gap-6 mb-6">
-            <div class="flex items-center gap-3 mb-8">
-              <div
-                class="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
-                style="background:var(--color-gold);"
-              >
-                <svg
-                  class="w-5 h-5 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                  ></path>
-                </svg>
-              </div>
-              <h3
-                class="text-xl font-bold dark:text-white lang-text"
-                style="color:var(--color-charcoal);"
-                data-en="Professional Tools"
-                data-sv="Professionella Verktyg"
-              >
-                Professional Tools
-              </h3>
-            </div>
-
-            <div class="grid grid-cols-3 gap-5 stagger-cards">
-              <div class="stagger-item card p-4 text-center">
-                <div
-                  class="w-12 h-12 mx-auto mb-2 rounded-xl flex items-center justify-center"
-                  style="background:var(--color-coral-light);"
-                >
-                  <span
-                    class="text-sm font-bold"
-                    style="color:var(--color-coral-dark);">AHM</span
-                  >
-                </div>
-                <p
-                  class="text-sm font-semibold dark:text-white"
-                  style="color:var(--color-charcoal);"
-                >
-                  AHM
-                </p>
-                <p
-                  class="text-xs mt-0.5"
-                  style="color:var(--color-charcoal-light);"
-                >
-                  90%
-                </p>
-              </div>
-
-              <div class="stagger-item card p-4 text-center">
-                <div
-                  class="w-12 h-12 mx-auto mb-2 rounded-xl flex items-center justify-center"
-                  style="background:var(--color-gold-light);"
-                >
-                  <span
-                    class="text-sm font-bold"
-                    style="color:var(--color-terracotta);">AM</span
-                  >
-                </div>
-                <p
-                  class="text-sm font-semibold dark:text-white"
-                  style="color:var(--color-charcoal);"
-                >
-                  Amadeus
-                </p>
-                <p
-                  class="text-xs mt-0.5"
-                  style="color:var(--color-charcoal-light);"
-                >
-                  90%
-                </p>
-              </div>
-
-              <div class="stagger-item card p-4 text-center">
-                <div
-                  class="w-12 h-12 mx-auto mb-2 rounded-xl flex items-center justify-center"
-                  style="background:rgba(139,157,131,0.2);"
-                >
-                  <span
-                    class="text-sm font-bold"
-                    style="color:var(--color-sage);">NH</span
-                  >
-                </div>
-                <p
-                  class="text-sm font-semibold dark:text-white"
-                  style="color:var(--color-charcoal);"
-                >
-                  NewHotel
-                </p>
-                <p
-                  class="text-xs mt-0.5"
-                  style="color:var(--color-charcoal-light);"
-                >
-                  72%
-                </p>
-              </div>
-
-              <div class="stagger-item card p-4 text-center">
-                <div
-                  class="w-12 h-12 mx-auto mb-2 rounded-xl flex items-center justify-center"
-                  style="background:var(--color-coral-light);"
-                >
-                  <span
-                    class="text-sm font-bold"
-                    style="color:var(--color-coral-dark);">TR</span
-                  >
-                </div>
-                <p
-                  class="text-sm font-semibold dark:text-white"
-                  style="color:var(--color-charcoal);"
-                >
-                  Trello
-                </p>
-                <p
-                  class="text-xs mt-0.5"
-                  style="color:var(--color-charcoal-light);"
-                >
-                  80%
-                </p>
-              </div>
-
-              <div class="stagger-item card p-4 text-center">
-                <div
-                  class="w-12 h-12 mx-auto mb-2 rounded-xl flex items-center justify-center"
-                  style="background:var(--color-gold-light);"
-                >
-                  <span
-                    class="text-sm font-bold"
-                    style="color:var(--color-terracotta);">MY</span
-                  >
-                </div>
-                <p
-                  class="text-sm font-semibold dark:text-white"
-                  style="color:var(--color-charcoal);"
-                >
-                  MasterYield
-                </p>
-                <p
-                  class="text-xs mt-0.5"
-                  style="color:var(--color-charcoal-light);"
-                >
-                  90%
-                </p>
-              </div>
-
-              <div class="stagger-item card p-4 text-center">
-                <div
-                  class="w-12 h-12 mx-auto mb-2 rounded-xl flex items-center justify-center"
-                  style="background:rgba(139,157,131,0.2);"
-                >
-                  <span
-                    class="text-sm font-bold"
-                    style="color:var(--color-sage);">GW</span
-                  >
-                </div>
-                <p
-                  class="text-sm font-semibold dark:text-white"
-                  style="color:var(--color-charcoal);"
-                >
-                  Greenway
-                </p>
-                <p
-                  class="text-xs mt-0.5"
-                  style="color:var(--color-charcoal-light);"
-                >
-                  90%
-                </p>
-              </div>
-
-              <div class="stagger-item card p-4 text-center">
-                <div
-                  class="w-12 h-12 mx-auto mb-2 rounded-xl flex items-center justify-center"
-                  style="background:var(--color-rose-light);"
-                >
-                  <span
-                    class="text-sm font-bold"
-                    style="color:var(--color-terracotta);">O365</span
-                  >
-                </div>
-                <p
-                  class="text-sm font-semibold dark:text-white"
-                  style="color:var(--color-charcoal);"
-                >
-                  Office 365
-                </p>
-                <p
-                  class="text-xs mt-0.5"
-                  style="color:var(--color-charcoal-light);"
-                >
-                  85%
-                </p>
-              </div>
-
-              <div class="stagger-item card p-4 text-center">
-                <div
-                  class="w-12 h-12 mx-auto mb-2 rounded-xl flex items-center justify-center"
-                  style="background:var(--color-coral-light);"
-                >
-                  <span
-                    class="text-sm font-bold"
-                    style="color:var(--color-coral-dark);">GG</span
-                  >
-                </div>
-                <p
-                  class="text-sm font-semibold dark:text-white"
-                  style="color:var(--color-charcoal);"
-                >
-                  Google WS
-                </p>
-                <p
-                  class="text-xs mt-0.5"
-                  style="color:var(--color-charcoal-light);"
-                >
-                  94%
-                </p>
-              </div>
-
-              <div class="stagger-item card p-4 text-center">
-                <div
-                  class="w-12 h-12 mx-auto mb-2 rounded-xl flex items-center justify-center"
-                  style="background:var(--color-gold-light);"
-                >
-                  <span
-                    class="text-sm font-bold"
-                    style="color:var(--color-terracotta);">CV</span
-                  >
-                </div>
-                <p
-                  class="text-sm font-semibold dark:text-white"
-                  style="color:var(--color-charcoal);"
-                >
-                  Canva
-                </p>
-                <p
-                  class="text-xs mt-0.5"
-                  style="color:var(--color-charcoal-light);"
-                >
-                  74%
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Services -->
-      <div class="reveal-section flex flex-col gap-6 mb-6">
-        <h3
-          class="text-2xl font-bold text-center flex justify-center dark:text-white lang-text"
-          style="color:var(--color-charcoal);"
-          data-en="What I Can Do For You"
-          data-sv="Vad Jag Kan Göra För Dig"
-        >
-          What I Can Do For You
-        </h3>
-
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 stagger-cards">
-          <div class="stagger-item card p-8 text-center group">
-            <div
-              class="w-16 h-16 mx-auto mb-5 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-110"
-              style="background:linear-gradient(135deg,var(--color-coral),var(--color-terracotta));"
-            >
-              <svg
-                class="w-8 h-8 text-white"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-                ></path>
-              </svg>
-            </div>
-            <h4
-              class="text-base font-bold mb-2 dark:text-white lang-text"
-              style="color:var(--color-charcoal);"
-              data-en="Reception"
-              data-sv="Reception"
-            >
-              Reception
-            </h4>
-            <p
-              class="text-sm leading-relaxed dark:text-gray-400 lang-text"
-              style="color:var(--color-charcoal-light);"
-              data-en="Front desk management, guest services, check-in/out"
-              data-sv="Receptionstjänster, gästtjänster, in-/utcheckning"
-            >
-              Front desk management, guest services, check-in/out
-            </p>
-          </div>
-
-          <div class="stagger-item card p-8 text-center group">
-            <div
-              class="w-16 h-16 mx-auto mb-5 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-110"
-              style="background:linear-gradient(135deg,var(--color-gold),var(--color-terracotta));"
-            >
-              <svg
-                class="w-8 h-8 text-white"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                ></path>
-              </svg>
-            </div>
-            <h4
-              class="text-base font-bold mb-2 dark:text-white lang-text"
-              style="color:var(--color-charcoal);"
-              data-en="Administrative"
-              data-sv="Administrativ"
-            >
-              Administrative
-            </h4>
-            <p
-              class="text-sm leading-relaxed dark:text-gray-400 lang-text"
-              style="color:var(--color-charcoal-light);"
-              data-en="Documentation, scheduling, correspondence"
-              data-sv="Dokumentation, schemaläggning, korrespondens"
-            >
-              Documentation, scheduling, correspondence
-            </p>
-          </div>
-
-          <div class="stagger-item card p-8 text-center group">
-            <div
-              class="w-16 h-16 mx-auto mb-5 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-110"
-              style="background:linear-gradient(135deg,var(--color-sage),var(--color-gold));"
-            >
-              <svg
-                class="w-8 h-8 text-white"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                ></path>
-              </svg>
-            </div>
-            <h4
-              class="text-base font-bold mb-2 dark:text-white lang-text"
-              style="color:var(--color-charcoal);"
-              data-en="Personal Assistant"
-              data-sv="Personlig Assistent"
-            >
-              Personal Assistant
-            </h4>
-            <p
-              class="text-sm leading-relaxed dark:text-gray-400 lang-text"
-              style="color:var(--color-charcoal-light);"
-              data-en="Calendar management, travel arrangements, support"
-              data-sv="Kalenderhantering, resebokningar, stöd"
-            >
-              Calendar management, travel arrangements, support
-            </p>
-          </div>
-
-          <div class="stagger-item card p-8 text-center group">
-            <div
-              class="w-16 h-16 mx-auto mb-5 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-110"
-              style="background:linear-gradient(135deg,var(--color-rose),var(--color-coral));"
-            >
-              <svg
-                class="w-8 h-8 text-white"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"
-                ></path>
-              </svg>
-            </div>
-            <h4
-              class="text-base font-bold mb-2 dark:text-white lang-text"
-              style="color:var(--color-charcoal);"
-              data-en="Translation"
-              data-sv="Översättning"
-            >
-              Translation
-            </h4>
-            <p
-              class="text-sm leading-relaxed dark:text-gray-400 lang-text"
-              style="color:var(--color-charcoal-light);"
-              data-en="Multilingual communication support"
-              data-sv="Flerspråkigt kommunikationsstöd"
-            >
-              Multilingual communication support
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════
-      CONTACT SECTION
-  ═══════════════════════════════════════ -->
-  <section
-    id="contact"
-    class="dark:from-gray-800 dark:to-gray-900 transition-colors flex justify-center items-center m-4 p-4 min-h-screen"
-    style="background:linear-gradient(to bottom, var(--color-cream), var(--color-blush));"
-  >
-    <div class="max-w-5xl mx-auto flex flex-col gap-6 px-6">
-      <div class="text-center reveal-section flex flex-col gap-4">
-        <p
-          class="section-subtitle lang-text flex justify-center"
-          data-en="Let's Connect"
-          data-sv="Låt Oss Connecta"
-        >
-          Let's Connect
-        </p>
-        <h2
-          class="section-title dark:text-white lang-text"
-          data-en="Get In Touch"
-          data-sv="Kontakta Mig"
-        >
-          Get In Touch
-        </h2>
-        <p
-          class="mt-4 text-base leading-relaxed dark:text-gray-400 lang-text"
-          style="color:var(--color-charcoal-light);"
-          data-en="Whether you're looking for a dedicated professional or want to discuss how I can contribute to your organization, I'd love to hear from you."
-          data-sv="Oavsett om du letar efter en engagerad professionell eller vill diskutera hur jag kan bidra till din organisation, skulle jag gärna höra från dig."
-        >
-          Whether you're looking for a dedicated professional or want to discuss
-          how I can contribute to your organization, I'd love to hear from you.
-        </p>
-      </div>
-
-      <div class="reveal-section flex flex-col gap-10">
-        <form id="contact-form" class="flex flex-col gap-6">
-          <div class="grid md:grid-cols-2 gap-6">
-            <div>
-              <label
-                class="form-label lang-text flex items-center justify-center gap-1"
-                data-en="Your Name"
-                data-sv="Ditt Namn">Your Name</label
-              >
-              <input
-                type="text"
-                name="name"
-                required
-                class="form-input"
-                placeholder="Anna Svensson"
-              />
-            </div>
-            <div>
-              <label
-                class="form-label lang-text flex items-center justify-center gap-1"
-                data-en="Email Address"
-                data-sv="E-postadress">Email Address</label
-              >
-              <input
-                type="email"
-                name="email"
-                required
-                class="form-input"
-                placeholder="anna@foretag.se"
-              />
-            </div>
-          </div>
-
-          <div>
-            <label
-              class="form-label lang-text flex items-center justify-center gap-1"
-              data-en="Company (optional)"
-              data-sv="Företag (valfritt)">Company (optional)</label
-            >
-            <input
-              type="text"
-              name="company"
-              class="form-input"
-              placeholder="Företag AB"
-            />
-          </div>
-
-          <div>
-            <label
-              class="form-label lang-text flex items-center justify-center gap-1"
-              data-en="Subject"
-              data-sv="Ämne">Subject</label
-            >
-            <input
-              type="text"
-              name="subject"
-              required
-              class="form-input"
-              placeholder="Job opportunity / Collaboration..."
-            />
-          </div>
-
-          <div>
-            <label
-              class="form-label lang-text flex items-center justify-center gap-1"
-              data-en="Your Message"
-              data-sv="Ditt Meddelande">Your Message</label
-            >
-            <textarea
-              name="message"
-              rows="2"
-              required
-              class="form-input"
-              placeholder="Tell me about the opportunity..."></textarea>
-          </div>
-
-          <div class="pt-2 text-center">
-            <button type="submit" class="btn-primary" id="submit-btn">
-              <span
-                class="lang-text"
-                data-en="Send Message"
-                data-sv="Skicka Meddelande">Send Message</span
-              >
-              <svg
-                class="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-              </svg>
-            </button>
-          </div>
-        </form>
-
-        <!-- Alternative contact methods -->
-        <div
-          class="mt-10 pt-8 flex flex-col gap-6 items-center justify-center"
-          style="border-top:1px solid var(--color-cream-dark);"
-        >
-          <p
-            class="text-center text-sm dark:text-gray-400 mb-6 lang-text"
-            style="color:var(--color-charcoal-light);"
-            data-en="Or reach me directly"
-            data-sv="Eller nå mig direkt"
-          >
-            Or reach me directly
-          </p>
-
-          <div
-            class="flex flex-col sm:flex-row items-center justify-center gap-4"
-          >
-            <a
-              href="https://www.linkedin.com/in/maria-i-begueri/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="flex items-center gap-3 px-5 py-3 rounded-full transition-all hover:-translate-y-0.5"
-              style="background:var(--color-cream);color:var(--color-charcoal);"
-              onmouseover="this.style.background='var(--color-coral)';this.style.color='white';"
-              onmouseout="this.style.background='var(--color-cream)';this.style.color='var(--color-charcoal)';"
-            >
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path
-                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
-                ></path>
-              </svg>
-            </a>
-
-            <a
-              href="mailto:maria.begueri@email.com"
-              class="flex items-center gap-3 px-5 py-3 rounded-full transition-all hover:-translate-y-0.5"
-              style="background:var(--color-cream);color:var(--color-charcoal);"
-              onmouseover="this.style.background='var(--color-gold)';this.style.color='white';"
-              onmouseout="this.style.background='var(--color-cream)';this.style.color='var(--color-charcoal)';"
-            >
-              <svg
-                class="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                ></path>
-              </svg>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- Sections -->
+  <About />
+  <Journey />
+  <Skills />
+  <Contact />
 </Layout>
 
 <script>
@@ -1455,70 +32,266 @@ import Layout from "../layouts/Layout.astro";
 
   gsap.registerPlugin(ScrollTrigger);
 
-  document.addEventListener("DOMContentLoaded", () => {
-    // ── Parallax on scroll ──
-    const parallaxLayers =
-      document.querySelectorAll<HTMLElement>("[data-speed]");
-    window.addEventListener(
-      "scroll",
-      () => {
-        const sy = window.scrollY;
-        parallaxLayers.forEach((l) => {
-          const speed = parseFloat(l.dataset.speed ?? "0");
-          l.style.transform = `translateY(${sy * speed}px)`;
-        });
-      },
-      { passive: true },
-    );
+  // ─────────────────────────────────────────
+  // Helpers
+  // ─────────────────────────────────────────
+  const ease = "power3.out";
 
-    // ── Skill bars ──
-    document.querySelectorAll<HTMLElement>(".skill-progress").forEach((bar) => {
-      const target = bar.dataset.width ?? "0%";
-      gsap.to(bar, {
+  // Set GSAP as master of reveal-section initial states
+  gsap.set(".reveal-section", { opacity: 0, y: 44, force3D: true });
+
+  // ─────────────────────────────────────────
+  // Hero entrance
+  // ─────────────────────────────────────────
+  (() => {
+    const tl = gsap.timeline({ defaults: { ease: "power4.out", force3D: true } });
+
+    const taglineEl  = document.querySelector<HTMLElement>("#hero-tagline");
+    const h1El       = document.querySelector<HTMLElement>("#hero-h1");
+    const subtitleEl = document.querySelector<HTMLElement>("#hero-subtitle");
+    const ctas       = document.querySelector("#hero-ctas");
+    const scroll     = document.querySelector("#scroll-indicator");
+
+    // Tagline — whole element slide-up with blur (safe for lang-text)
+    if (taglineEl) {
+      gsap.set(taglineEl, { opacity: 0, y: 24, filter: "blur(4px)" });
+      tl.to(taglineEl, {
+        opacity: 1, y: 0, filter: "blur(0px)", duration: 0.7,
+      }, 0.2);
+    }
+
+    // H1 "Hi, I'm" span — fade up
+    const hiSpan = h1El?.querySelector<HTMLElement>(".lang-text");
+    if (hiSpan) {
+      gsap.set(hiSpan, { opacity: 0, y: 28 });
+      tl.to(hiSpan, { opacity: 1, y: 0, duration: 0.7, ease }, 0.5);
+    }
+
+    // H1 "Maria Isabel" — simple fade+rise (word-split breaks background-clip:text)
+    const nameSpan = h1El?.querySelector<HTMLElement>(".gradient-text");
+    if (nameSpan) {
+      gsap.set(nameSpan, { opacity: 0, y: 30 });
+      tl.to(nameSpan, { opacity: 1, y: 0, duration: 0.9, ease: "power4.out" }, 0.65);
+    }
+
+    // Subtitle — fade + slide up
+    if (subtitleEl) {
+      gsap.set(subtitleEl, { opacity: 0, y: 22 });
+      tl.to(subtitleEl, { opacity: 1, y: 0, duration: 0.75, ease }, 1.05);
+    }
+
+    // CTAs — fade up stagger
+    if (ctas) {
+      const btns = ctas.querySelectorAll("a");
+      gsap.set(btns, { opacity: 0, y: 18 });
+      tl.to(btns, { opacity: 1, y: 0, duration: 0.6, stagger: 0.12, ease }, 1.25);
+    }
+
+    // Scroll indicator — pure fade
+    if (scroll) {
+      gsap.set(scroll, { opacity: 0 });
+      tl.to(scroll, { opacity: 1, duration: 0.7 }, 1.55);
+    }
+  })();
+
+  // ─────────────────────────────────────────
+  // Paso G: Section title clip-reveal on scroll
+  // Wraps each title in an overflow:hidden container for a masked slide-up
+  // ─────────────────────────────────────────
+  document.querySelectorAll<HTMLElement>(".section-title").forEach((titleEl) => {
+    // Skip if already wrapped (language switcher re-runs)
+    if (titleEl.dataset.splitDone) return;
+    titleEl.dataset.splitDone = "1";
+
+    const inner = document.createElement("span");
+    inner.style.cssText = "display:block;";
+    inner.innerHTML = titleEl.innerHTML;
+    titleEl.style.overflow = "hidden";
+    titleEl.style.display  = "block";
+    titleEl.innerHTML = "";
+    titleEl.appendChild(inner);
+
+    gsap.set(inner, { y: "100%" });
+    gsap.to(inner, {
+      y: "0%", duration: 0.9, ease: "power3.out",
+      scrollTrigger: {
+        trigger: titleEl,
+        start: "top 89%",
+        toggleActions: "play none none none",
+      },
+    });
+  });
+
+  // ─────────────────────────────────────────
+  // Parallax on scroll
+  // ─────────────────────────────────────────
+  const parallaxLayers = document.querySelectorAll<HTMLElement>("[data-speed]");
+  window.addEventListener(
+    "scroll",
+    () => {
+      const sy = window.scrollY;
+      parallaxLayers.forEach((l) => {
+        const speed = parseFloat(l.dataset.speed ?? "0");
+        l.style.transform = `translateY(${sy * speed}px)`;
+      });
+    },
+    { passive: true }
+  );
+
+  // ─────────────────────────────────────────
+  // reveal-section — fade up
+  // ─────────────────────────────────────────
+  document.querySelectorAll<HTMLElement>(".reveal-section").forEach((el) => {
+    gsap.to(el, {
+      opacity: 1,
+      y: 0,
+      duration: 0.85,
+      ease,
+      scrollTrigger: {
+        trigger: el,
+        start: "top 88%",
+        toggleActions: "play none none none",
+      },
+    });
+  });
+
+  // ─────────────────────────────────────────
+  // stagger-cards — cascading entrance
+  // ─────────────────────────────────────────
+  document.querySelectorAll<HTMLElement>(".stagger-cards").forEach((grid) => {
+    const items = grid.querySelectorAll<HTMLElement>(".stagger-item");
+    gsap.to(items, {
+      opacity: 1,
+      y: 0,
+      duration: 0.65,
+      stagger: 0.1,
+      ease,
+      scrollTrigger: {
+        trigger: grid,
+        start: "top 85%",
+        toggleActions: "play none none none",
+      },
+    });
+  });
+
+  // ─────────────────────────────────────────
+  // Section headers — subtitle then title
+  // ─────────────────────────────────────────
+  document.querySelectorAll<HTMLElement>(".section-subtitle").forEach((sub) => {
+    gsap.fromTo(sub,
+      { opacity: 0, y: 16 },
+      {
+        opacity: 1, y: 0, duration: 0.55, ease,
+        scrollTrigger: { trigger: sub, start: "top 87%", toggleActions: "play none none none" },
+      }
+    );
+  });
+
+  // ─────────────────────────────────────────
+  // Timeline items — alternate left / right
+  // ─────────────────────────────────────────
+  document.querySelectorAll<HTMLElement>(".timeline-item-left").forEach((el) => {
+    gsap.fromTo(el,
+      { opacity: 0, x: -48 },
+      { opacity: 1, x: 0, duration: 0.75, ease,
+        scrollTrigger: { trigger: el, start: "top 88%", toggleActions: "play none none none" } }
+    );
+  });
+  document.querySelectorAll<HTMLElement>(".timeline-item-right").forEach((el) => {
+    gsap.fromTo(el,
+      { opacity: 0, x: 48 },
+      { opacity: 1, x: 0, duration: 0.75, ease,
+        scrollTrigger: { trigger: el, start: "top 88%", toggleActions: "play none none none" } }
+    );
+  });
+
+  // ─────────────────────────────────────────
+  // Skill bars
+  // ─────────────────────────────────────────
+  document.querySelectorAll<HTMLElement>(".skill-progress").forEach((bar) => {
+    const target = bar.dataset.width ?? "0%";
+    gsap.fromTo(
+      bar,
+      { width: "0%" },
+      {
         width: target,
-        duration: 1.5,
+        duration: 1.6,
         ease: "power3.out",
         scrollTrigger: {
           trigger: bar,
-          start: "top 88%",
+          start: "top 90%",
           toggleActions: "play none none reset",
         },
-      });
-    });
+      }
+    );
+  });
 
-    // ── Floating cards ──
-    gsap.utils.toArray<HTMLElement>(".animate-float").forEach((el, i) => {
-      gsap.to(el, {
-        y: -14,
-        duration: 2.5,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-        delay: i * 0.6,
-      });
+  // ─────────────────────────────────────────
+  // Floating cards — continuous bob
+  // ─────────────────────────────────────────
+  gsap.utils.toArray<HTMLElement>(".animate-float").forEach((el, i) => {
+    gsap.to(el, {
+      y: -14,
+      duration: 2.4 + i * 0.3,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+      delay: i * 0.65,
     });
+  });
 
-    // ── Contact form ──
-    const form = document.getElementById(
-      "contact-form",
-    ) as HTMLFormElement | null;
-    const btn = document.getElementById(
-      "submit-btn",
-    ) as HTMLButtonElement | null;
-
-    form?.addEventListener("submit", (e) => {
-      e.preventDefault();
-      if (!btn) return;
-      const orig = btn.innerHTML;
-      btn.innerHTML = `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Sent!</span>`;
-      btn.style.background = "var(--color-sage)";
-      btn.disabled = true;
-      setTimeout(() => {
-        btn.innerHTML = orig;
-        btn.style.background = "";
-        btn.disabled = false;
-        form.reset();
-      }, 3000);
+  // ─────────────────────────────────────────
+  // Cards — subtle entrance on About section
+  // ─────────────────────────────────────────
+  document.querySelectorAll<HTMLElement>(".card").forEach((card, i) => {
+    // skip stagger-item cards (handled by stagger-cards above)
+    if (card.classList.contains("stagger-item")) return;
+    gsap.from(card, {
+      opacity: 0, y: 30, scale: 0.97, duration: 0.7, ease,
+      delay: i * 0.05,
+      scrollTrigger: {
+        trigger: card,
+        start: "top 90%",
+        toggleActions: "play none none none",
+      },
     });
+  });
+
+  // ─────────────────────────────────────────
+  // Contact section — form fields cascade
+  // ─────────────────────────────────────────
+  const contactForm = document.getElementById("contact-form");
+  if (contactForm) {
+    const fields = contactForm.querySelectorAll<HTMLElement>(".form-input, .btn-primary");
+    gsap.fromTo(fields,
+      { opacity: 0, y: 20 },
+      {
+        opacity: 1, y: 0, duration: 0.55, stagger: 0.08, ease,
+        scrollTrigger: { trigger: contactForm, start: "top 85%", toggleActions: "play none none none" },
+      }
+    );
+  }
+
+  // ─────────────────────────────────────────
+  // Contact form submit handler
+  // ─────────────────────────────────────────
+  const form = document.getElementById("contact-form") as HTMLFormElement | null;
+  const btn  = document.getElementById("submit-btn")   as HTMLButtonElement | null;
+
+  form?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (!btn) return;
+    const orig = btn.innerHTML;
+    btn.innerHTML =
+      `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Sent!</span>`;
+    btn.style.background = "var(--color-sage)";
+    btn.disabled = true;
+    gsap.from(btn, { scale: 0.92, duration: 0.3, ease: "back.out(2)" });
+    setTimeout(() => {
+      btn.innerHTML = orig;
+      btn.style.background = "";
+      btn.disabled = false;
+      form.reset();
+    }, 3000);
   });
 </script>

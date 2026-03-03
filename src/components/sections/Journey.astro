@@ -1,0 +1,33 @@
+---
+import SectionHeader from "../ui/SectionHeader.astro";
+import TimelineItem from "../ui/TimelineItem.astro";
+import { timeline } from "../../data/timeline";
+---
+
+<section
+  id="journey"
+  class="py-32 dark:from-gray-800 dark:to-gray-900 transition-colors flex justify-center items-center m-4 p-4 min-h-screen"
+  style="background:linear-gradient(to bottom, var(--color-cream), var(--color-warm-white));"
+>
+  <div class="max-w-5xl mx-auto px-6">
+    <SectionHeader
+      subtitleEn="My Professional Path"
+      subtitleSv="Min Professionella Väg"
+      titleEn="A Journey of Growth"
+      titleSv="En Resa Av Tillväxt"
+    />
+
+    <div class="relative stagger-cards mt-6">
+      <!-- Vertical line (desktop) -->
+      <div
+        class="absolute left-1/2 top-0 bottom-0 w-0.5 -translate-x-1/2 hidden md:block"
+        style="background:linear-gradient(to bottom, var(--color-coral), var(--color-gold), var(--color-sage));"
+      >
+      </div>
+
+      <div class="space-y-12">
+        {timeline.map((entry) => <TimelineItem entry={entry} />)}
+      </div>
+    </div>
+  </div>
+</section>

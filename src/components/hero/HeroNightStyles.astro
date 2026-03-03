@@ -1,0 +1,124 @@
+---
+
+---
+
+<style is:global>
+  /* ══════════════════════════════════════════
+     PARALLAX NIGHT MODE
+  ══════════════════════════════════════════ */
+
+  /* Cielo nocturno */
+  .dark #sky-layer {
+    background: linear-gradient(
+      180deg,
+      #000508 0%,
+      #000d1a 18%,
+      #020f1e 36%,
+      #041523 60%,
+      #061a2c 80%,
+      #082030 100%
+    ) !important;
+  }
+
+  /* Nubes: ocultas de noche */
+  .dark #clouds-layer {
+    display: none;
+  }
+
+  /* Estrellas + luna: ocultas de día */
+  #night-layer {
+    display: none;
+  }
+  .dark #night-layer {
+    display: block;
+  }
+
+  /* Ventanas: vidrio azul de día → ámbar cálido de noche */
+  .dark #parallax-container rect[fill="#7DC8E8"],
+  .dark #parallax-container rect[fill="#8EC8E8"],
+  .dark #parallax-container rect[fill="#90C8E8"],
+  .dark #parallax-container rect[fill="#B8DCF0"] {
+    fill: #ffd060 !important;
+  }
+
+  /* Edificios: oscurecer para noche */
+  .dark #parallax-container rect[fill="#C8A090"],
+  .dark #parallax-container rect[fill="#C09080"],
+  .dark #parallax-container rect[fill="#B88878"] {
+    fill: #1c0a06 !important;
+  }
+
+  .dark #parallax-container rect[fill="#9B4A32"],
+  .dark #parallax-container rect[fill="#8C4028"],
+  .dark #parallax-container rect[fill="#A05038"] {
+    fill: #260c04 !important;
+  }
+
+  .dark #parallax-container rect[fill="#7A3020"],
+  .dark #parallax-container rect[fill="#8B3A28"] {
+    fill: #180804 !important;
+  }
+
+  .dark #parallax-container rect[fill="#6A2010"],
+  .dark #parallax-container rect[fill="#6A2818"],
+  .dark #parallax-container rect[fill="#621808"] {
+    fill: #0e0202 !important;
+  }
+
+  .dark #parallax-container rect[fill="#4A1008"],
+  .dark #parallax-container rect[fill="#7A2010"] {
+    fill: #0a0100 !important;
+  }
+
+  /* Carteles hoteleros: efecto neón de noche */
+  .dark #parallax-container rect[fill="#E07A5F"] {
+    fill: #ff9070 !important;
+    filter: drop-shadow(0 0 4px #ff7050);
+  }
+  .dark #parallax-container rect[fill="#D4AF37"] {
+    fill: #ffd54a !important;
+    filter: drop-shadow(0 0 4px #ffb800);
+  }
+
+  /* Acera / calle */
+  .dark #parallax-container rect[fill="#C8A880"] {
+    fill: #1a1408 !important;
+  }
+  .dark #parallax-container rect[fill="#B09060"] {
+    fill: #140e04 !important;
+  }
+  .dark #parallax-container rect[fill="#A07850"] {
+    fill: #100a02 !important;
+  }
+  .dark #parallax-container rect[fill="#C09060"] {
+    fill: #201808 !important;
+  }
+  .dark #parallax-container rect[fill="#D4B080"] {
+    fill: #2a2010 !important;
+  }
+
+  /* Farolas: brillo nocturno */
+  .dark #parallax-container ellipse[fill="rgba(255,220,120,0.85)"] {
+    fill: rgba(255, 220, 80, 0.95) !important;
+    filter: drop-shadow(0 0 8px rgba(255, 200, 60, 0.8));
+  }
+
+  /* Textos del hero en modo noche */
+  .dark #hero-tagline {
+    color: #c8b090 !important;
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.9) !important;
+  }
+  .dark #hero-h1 {
+    color: #f5eed8 !important;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.9) !important;
+  }
+  .dark #hero-subtitle {
+    color: #d4c0a0 !important;
+    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.9) !important;
+  }
+
+  /* Degradado al pie del hero en modo noche */
+  .dark #hero-bottom-fade {
+    background: linear-gradient(to top, #1a1a1a, transparent) !important;
+  }
+</style>

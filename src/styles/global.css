@@ -34,6 +34,7 @@
   --color-charcoal-light: #d1d1d1;
 }
 
+/* ── Playfair Display — upright 400–700 ── */
 @font-face {
   font-family: "Playfair Display";
   font-style: normal;
@@ -42,14 +43,25 @@
   src: url("https://fonts.gstatic.com/s/playfairdisplay/v37/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKdFvXDXbtM.woff2") format("woff2");
 }
 
+/* ── Playfair Display — italic 400–700 ── */
+@font-face {
+  font-family: "Playfair Display";
+  font-style: italic;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/playfairdisplay/v37/nuFiD-vYSZviVYUb_rj3ij__anPXDTzYgEM86xRbPQ.woff2") format("woff2");
+}
+
+/* ── DM Sans — 300–700 ── */
 @font-face {
   font-family: "DM Sans";
   font-style: normal;
-  font-weight: 400 700;
+  font-weight: 300 700;
   font-display: swap;
   src: url("https://fonts.gstatic.com/s/dmsans/v15/rP2Hp2ywxg089UriCZ2IHTWEBlwu8Q.woff2") format("woff2");
 }
 
+/* ── Cormorant Garamond — italic 400, 600 ── */
 @font-face {
   font-family: "Cormorant Garamond";
   font-style: italic;
@@ -58,26 +70,73 @@
   src: url("https://fonts.gstatic.com/s/cormorantgaramond/v16/co3YmX5slCNuHLi8bLeY9MK7whWMhyjQAllvuQWJ5heb_w.woff2") format("woff2");
 }
 
+@font-face {
+  font-family: "Cormorant Garamond";
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/cormorantgaramond/v16/co3WmX5slCNuHLi8bLeY9MK7whWMhyjornFLsS6V7wx_.woff2") format("woff2");
+}
+
 @layer base {
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /* Prevent tap flash on iOS */
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Prevent iOS callout on long-press */
+  img,
+  svg {
+    -webkit-user-drag: none;
+  }
+
+  /* Smooth tap on interactive elements */
+  a,
+  button,
+  [role='button'],
+  label {
+    touch-action: manipulation;
   }
 }
 
 html {
   scroll-behavior: smooth;
+  /* Support notched phones */
+  padding:
+    env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
 
 body {
   font-family: var(--font-sans);
+  font-size: 1rem;
+  /* 16px — safe baseline for iOS zoom */
+  line-height: 1.75;
   background-color: var(--color-warm-white);
   color: var(--color-charcoal);
   overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
   transition:
     background-color 0.3s ease,
     color 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  body {
+    font-size: 1.0625rem;
+    /* 17px on desktop */
+  }
+}
+
+/* Better text selection */
+::selection {
+  background: rgba(224, 122, 95, 0.22);
+  color: var(--color-charcoal);
 }
 
 .dark body {
@@ -86,16 +145,45 @@ body {
 
 h1,
 h2,
-h3 {
+h3,
+h4 {
   font-family: var(--font-display);
   color: var(--color-charcoal);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  font-feature-settings: "kern" 1, "liga" 1;
+  font-optical-sizing: auto;
   transition: color 0.3s ease;
 }
 
 .dark h1,
 .dark h2,
-.dark h3 {
+.dark h3,
+.dark h4 {
   color: var(--color-charcoal);
+}
+
+p {
+  font-family: var(--font-sans);
+  line-height: 1.75;
+}
+
+/* Lead paragraph — larger intro text */
+.lead {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  color: var(--color-charcoal-light);
+}
+
+/* Display text — hero h1 scale */
+.display-text {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  font-weight: 700;
+  line-height: 1.06;
+  letter-spacing: -0.03em;
 }
 
 .font-accent {
@@ -103,30 +191,39 @@ h3 {
   font-style: italic;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
+/* Custom scrollbar — desktop only */
+@media (pointer: fine) {
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-cream);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-coral);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-coral-dark);
+  }
+
+  .dark ::-webkit-scrollbar-track {
+    background: #252525;
+  }
+
+  .dark ::-webkit-scrollbar-thumb {
+    background: var(--color-coral-light);
+  }
 }
 
-::-webkit-scrollbar-track {
-  background: var(--color-cream);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--color-coral);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-coral-dark);
-}
-
-.dark ::-webkit-scrollbar-track {
-  background: #252525;
-}
-
-.dark ::-webkit-scrollbar-thumb {
-  background: var(--color-coral-light);
+/* Use dynamic viewport height on mobile (fixes iOS 100vh bug) */
+@supports (min-height: 100dvh) {
+  .min-h-screen {
+    min-height: 100dvh;
+  }
 }
 
 /* Animations */
@@ -209,6 +306,21 @@ h3 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  /* prevent clipping on descended letters */
+  padding-bottom: 0.06em;
+  display: inline-block;
+}
+
+/* Disable float animation on mobile — saves battery & avoids jank */
+@media (max-width: 767px) {
+  .animate-float {
+    animation: none !important;
+  }
+
+  /* Slightly smaller parallax motion on mobile */
+  .parallax-layer {
+    will-change: auto;
+  }
 }
 
 /* Button styles */
@@ -223,6 +335,10 @@ h3 {
   padding: 0.875rem 2rem;
   border-radius: 9999px;
   font-weight: 600;
+  font-size: 1rem;
+  /* explicit 16px — prevents iOS zoom */
+  min-height: 44px;
+  /* WCAG touch target */
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(224, 122, 95, 0.4);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
@@ -243,6 +359,10 @@ h3 {
   padding: 0.875rem 2rem;
   border-radius: 9999px;
   font-weight: 600;
+  font-size: 1rem;
+  /* explicit 16px — prevents iOS zoom */
+  min-height: 44px;
+  /* WCAG touch target */
   transition: all 0.3s ease;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
@@ -294,16 +414,21 @@ h3 {
 /* Section styling */
 .section-title {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
   font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
   margin-bottom: 1rem;
 }
 
 .section-subtitle {
-  font-family: var(--font-accent);
-  font-style: italic;
-  font-size: 1.25rem;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
   color: var(--color-coral);
+  margin-bottom: 0.75rem;
 }
 
 /* Smooth reveal animation for sections */
@@ -318,67 +443,28 @@ h3 {
   transition: all 0.8s ease;
 }
 
-/* Stagger animation for cards */
+/* Stagger items — initial state set by GSAP */
 .stagger-cards .stagger-item {
   opacity: 0;
-  transform: translateY(30px);
+  transform: translateY(32px);
+  will-change: transform, opacity;
 }
 
-.stagger-cards.active .stagger-item {
-  opacity: 1;
-  transform: translateY(0);
-  transition: all 0.6s ease;
-}
-
-.stagger-cards.active .stagger-item:nth-child(1) {
-  transition-delay: 0.1s;
-}
-
-.stagger-cards.active .stagger-item:nth-child(2) {
-  transition-delay: 0.2s;
-}
-
-.stagger-cards.active .stagger-item:nth-child(3) {
-  transition-delay: 0.3s;
-}
-
-.stagger-cards.active .stagger-item:nth-child(4) {
-  transition-delay: 0.4s;
-}
-
-.stagger-cards.active .stagger-item:nth-child(5) {
-  transition-delay: 0.5s;
-}
-
-.stagger-cards.active .stagger-item:nth-child(6) {
-  transition-delay: 0.6s;
-}
-
-.stagger-cards.active .stagger-item:nth-child(7) {
-  transition-delay: 0.7s;
-}
-
-.stagger-cards.active .stagger-item:nth-child(8) {
-  transition-delay: 0.8s;
-}
-
-.stagger-cards.active .stagger-item:nth-child(9) {
-  transition-delay: 0.9s;
-}
-
-/* Reveal sections */
+/* Reveal sections — initial state only; GSAP handles the animation */
 .reveal-section {
   opacity: 0;
-  transform: translateY(40px);
+  transform: translateY(44px);
+  will-change: transform, opacity;
 }
 
-.reveal-section.visible {
-  opacity: 1;
-  transform: translateY(0);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+/* Stagger cards — initial state only; GSAP handles animation */
+.stagger-cards .stagger-item {
+  opacity: 0;
+  transform: translateY(32px);
+  will-change: transform, opacity;
 }
 
-/* ─── Form Inputs ─── */
+/* ── Form Inputs ── */
 .form-input {
   width: 100%;
   padding: 0.875rem 1.25rem;
@@ -387,12 +473,18 @@ h3 {
   background: white;
   color: var(--color-charcoal);
   font-family: var(--font-sans);
-  font-size: 0.95rem;
+  font-size: 1rem;
+  /* MUST be ≥ 16px — prevents iOS auto-zoom */
+  min-height: 44px;
+  /* WCAG touch target */
   transition:
     border-color 0.2s ease,
     box-shadow 0.2s ease;
   outline: none;
   resize: none;
+  -webkit-appearance: none;
+  /* remove iOS default styling */
+  appearance: none;
 }
 
 .form-input::placeholder {

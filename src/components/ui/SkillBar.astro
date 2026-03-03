@@ -1,0 +1,33 @@
+---
+interface Props {
+  labelEn: string;
+  labelSv: string;
+  percent: number;
+  gradient: string;
+}
+const { labelEn, labelSv, percent, gradient } = Astro.props;
+---
+
+<div>
+  <div class="flex justify-between mb-2">
+    <span
+      class="text-sm font-semibold dark:text-gray-300 lang-text"
+      style="color:var(--color-charcoal);"
+      data-en={labelEn}
+      data-sv={labelSv}
+    >
+      {labelEn}
+    </span>
+    <span class="text-sm font-bold" style="color:var(--color-coral);">
+      {percent}%
+    </span>
+  </div>
+  <div class="skill-bar-track">
+    <div
+      class="skill-bar-fill skill-progress"
+      style={`background:${gradient};`}
+      data-width={`${percent}%`}
+    >
+    </div>
+  </div>
+</div>

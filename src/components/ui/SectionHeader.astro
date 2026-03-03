@@ -1,0 +1,26 @@
+---
+interface Props {
+  subtitleEn: string;
+  subtitleSv: string;
+  titleEn: string;
+  titleSv: string;
+}
+const { subtitleEn, subtitleSv, titleEn, titleSv } = Astro.props;
+---
+
+<div class="text-center mb-16 reveal-section">
+  <p
+    class="section-subtitle lang-text"
+    data-en={subtitleEn}
+    data-sv={subtitleSv}
+  >
+    {subtitleEn}
+  </p>
+  <h2
+    class="section-title dark:text-white lang-text"
+    data-en={titleEn}
+    data-sv={titleSv}
+  >
+    {titleEn}
+  </h2>
+</div>
