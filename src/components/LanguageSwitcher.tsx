@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
-const gb= "<img src=\"https://flagsapi.com/GB/shiny/64.png\">";
-const se = "<img src=\"https://flagsapi.com/SE/shiny/64.png\">";
+const gb = '<img src="https://flagsapi.com/GB/shiny/64.png" alt="English" width="32" height="32" loading="lazy" decoding="async" />';
+const se = '<img src="https://flagsapi.com/SE/shiny/64.png" alt="Svenska" width="32" height="32" loading="lazy" decoding="async" />';
 
 export default function LanguageSwitcher() {
   const [language, setLanguage] = useState("en");
@@ -13,6 +13,7 @@ export default function LanguageSwitcher() {
   }, []);
 
   const updateLanguage = (lang: string) => {
+    document.documentElement.lang = lang;
     const elements = document.querySelectorAll(".lang-text");
     elements.forEach((element) => {
       const text = element.getAttribute(`data-${lang}`);
@@ -41,6 +42,7 @@ export default function LanguageSwitcher() {
 
   return (
     <button
+      type="button"
       onClick={toggleLanguage}
       className="p-1 w-8 h-8 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
       aria-label={language === "en" ? "Switch to Swedish" : "Switch to English"}

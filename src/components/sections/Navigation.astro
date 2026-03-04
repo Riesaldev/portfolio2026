@@ -74,8 +74,11 @@ import LanguageSwitcher from "@/components/LanguageSwitcher.tsx";
       <!-- Mobile Menu Button -->
       <button
         id="mobile-menu-btn"
+        type="button"
         class="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 group"
         aria-label="Toggle menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
       >
         <span
           class="w-6 h-0.5 bg-charcoal dark:bg-white transition-all duration-300 group-[.active]:rotate-45 group-[.active]:translate-y-2"
@@ -192,6 +195,7 @@ import LanguageSwitcher from "@/components/LanguageSwitcher.tsx";
           if (mobileMenu && mobileMenuBtn) {
             mobileMenu.style.maxHeight = "0";
             mobileMenuBtn.classList.remove("active");
+            mobileMenuBtn.setAttribute("aria-expanded", "false");
           }
         }
       });
@@ -202,7 +206,9 @@ import LanguageSwitcher from "@/components/LanguageSwitcher.tsx";
   const mobileMenu = document.getElementById("mobile-menu");
 
   mobileMenuBtn?.addEventListener("click", () => {
-    mobileMenuBtn.classList.toggle("active");
+    const isActive = mobileMenuBtn.classList.toggle("active");
+    mobileMenuBtn.setAttribute("aria-expanded", isActive ? "true" : "false");
+
     if (mobileMenu) {
       if (mobileMenu.style.maxHeight === "0px" || !mobileMenu.style.maxHeight) {
         mobileMenu.style.maxHeight = mobileMenu.scrollHeight + "px";
