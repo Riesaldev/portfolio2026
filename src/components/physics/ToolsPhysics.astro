@@ -65,7 +65,12 @@
           friction: 0.08,
           frictionAir: 0.012,
           label: t.label,
-        });
+        }) as Matter.Body & {
+          _color: string;
+          _isBall: boolean;
+          _r?: number;
+          label?: string;
+        };
         b._color = t.color;
         b._isBall = false;
         M.Body.setAngularVelocity(b, (Math.random() - 0.5) * 0.12);
@@ -87,7 +92,7 @@
           friction: 0.04,
           frictionAir: 0.008,
           label: "",
-        });
+        }) as Matter.Body & { _color: string; _isBall: boolean; _r: number };
         body._color = b.color;
         body._r = b.r;
         body._isBall = true;
@@ -95,6 +100,7 @@
         return body;
       });
 
+      // @ts-ignore
       var bodies = pillBodies.concat(balls);
       var thick = 60;
       var walls = [
@@ -116,6 +122,7 @@
         }),
       ];
 
+      // @ts-ignore
       M.Composite.add(world, pillBodies.concat(balls).concat(walls));
 
       var mouse = M.Mouse.create(canvas);
@@ -124,7 +131,6 @@
         mouse: mouse,
         constraint: {
           stiffness: 0.18,
-          angularStiffness: 0.02,
           render: { visible: false },
         },
       });
@@ -215,7 +221,7 @@
           ctx.translate(pos.x, pos.y);
           ctx.rotate(ang);
 
-          if (body._isBall) {
+          if (body._isBall && body._r !== undefined) {
             var br = body._r;
             ctx.shadowColor = "rgba(0,0,0,0.28)";
             ctx.shadowBlur = 12;
