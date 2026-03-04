@@ -26,6 +26,14 @@ import NoiseTexture from "@/ui/NoiseTexture.astro";
   <Contact />
 </Layout>
 
+<style is:global>
+  /* Fallback in case JS is disabled or fails: */
+  .no-js .reveal-section {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+</style>
+
 <script>
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";

@@ -137,7 +137,36 @@
         (canvas as HTMLCanvasElement).style.cursor = "grab";
       });
 
-      M.Runner.run(M.Runner.create(), engine);
+      var runner = M.Runner.create();
+      var isRunning = false;
+
+      function startEngine() {
+        if (!isRunning) {
+          isRunning = true;
+          M.Runner.run(runner, engine);
+          draw();
+        }
+      }
+
+      function stopEngine() {
+        if (isRunning) {
+          isRunning = false;
+          M.Runner.stop(runner);
+        }
+      }
+
+      var observer = new IntersectionObserver(
+        (entries) => {
+          if (entries[0].isIntersecting) {
+            startEngine();
+          } else {
+            stopEngine();
+          }
+        },
+        { threshold: 0.1 },
+      );
+
+      observer.observe(wrap);
 
       function rr(
         c: CanvasRenderingContext2D,
@@ -174,6 +203,7 @@
       }
 
       function draw() {
+        if (!isRunning) return;
         requestAnimationFrame(draw);
         var dark = document.documentElement.classList.contains("dark");
         ctx.clearRect(0, 0, W, H);
@@ -244,7 +274,7 @@
           ctx.restore();
         });
       }
-      draw();
+      // draw is triggered by IntersectionObserver startEngine()
     }
 
     function run() {

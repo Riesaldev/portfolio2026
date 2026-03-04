@@ -12,8 +12,12 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth no-js">
   <head>
+    <script>
+      document.documentElement.classList.remove("no-js");
+      document.documentElement.classList.add("js");
+    </script>
     <meta charset="UTF-8" />
     <meta
       name="viewport"
@@ -135,21 +139,20 @@ const { title } = Astro.props;
               </span>
             </p>
           </div>
+          <div class="mt-4 text-end">
+            <p>
+              Design by
+              <a
+                href="https://riesaldev.vercel.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="underline dark:text-gray-400 hover:text-coral transition-colors"
+              >
+                RiesalDev
+              </a>
+            </p>
+          </div>
         </div>
-      </div>
-      <div class="mt-4 text-end">
-        <p>
-          Design by
-          <a
-            href="https://riesal.vecel.app"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="underline dark:text-gray-400"
-            style="color:var(--color-charcoal-light);"
-          >
-            RiesalDev
-          </a>
-        </p>
       </div>
     </footer>
 
