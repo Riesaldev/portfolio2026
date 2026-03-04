@@ -1,13 +1,13 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import HeroParallax from "../components/hero/HeroParallax.astro";
-import HeroContent from "../components/hero/HeroContent.astro";
-import HeroNightStyles from "../components/hero/HeroNightStyles.astro";
-import About from "../components/sections/About.astro";
-import Journey from "../components/sections/Journey.astro";
-import Skills from "../components/sections/Skills.astro";
-import Contact from "../components/sections/Contact.astro";
-import NoiseTexture from "../components/ui/NoiseTexture.astro";
+import Layout from "@/layouts/Layout.astro";
+import HeroParallax from "@/hero/HeroParallax.astro";
+import HeroContent from "@/hero/HeroContent.astro";
+import HeroNightStyles from "@/hero/HeroNightStyles.astro";
+import About from "@/sections/About.astro";
+import Journey from "@/sections/Journey.astro";
+import Skills from "@/sections/Skills.astro";
+import Contact from "@/sections/Contact.astro";
+import NoiseTexture from "@/ui/NoiseTexture.astro";
 ---
 
 <Layout title="Maria Isabel Begueri | Hospitality Professional">
@@ -44,20 +44,29 @@ import NoiseTexture from "../components/ui/NoiseTexture.astro";
   // Hero entrance
   // ─────────────────────────────────────────
   (() => {
-    const tl = gsap.timeline({ defaults: { ease: "power4.out", force3D: true } });
+    const tl = gsap.timeline({
+      defaults: { ease: "power4.out", force3D: true },
+    });
 
-    const taglineEl  = document.querySelector<HTMLElement>("#hero-tagline");
-    const h1El       = document.querySelector<HTMLElement>("#hero-h1");
+    const taglineEl = document.querySelector<HTMLElement>("#hero-tagline");
+    const h1El = document.querySelector<HTMLElement>("#hero-h1");
     const subtitleEl = document.querySelector<HTMLElement>("#hero-subtitle");
-    const ctas       = document.querySelector("#hero-ctas");
-    const scroll     = document.querySelector("#scroll-indicator");
+    const ctas = document.querySelector("#hero-ctas");
+    const scroll = document.querySelector("#scroll-indicator");
 
     // Tagline — whole element slide-up with blur (safe for lang-text)
     if (taglineEl) {
       gsap.set(taglineEl, { opacity: 0, y: 24, filter: "blur(4px)" });
-      tl.to(taglineEl, {
-        opacity: 1, y: 0, filter: "blur(0px)", duration: 0.7,
-      }, 0.2);
+      tl.to(
+        taglineEl,
+        {
+          opacity: 1,
+          y: 0,
+          filter: "blur(0px)",
+          duration: 0.7,
+        },
+        0.2,
+      );
     }
 
     // H1 "Hi, I'm" span — fade up
@@ -71,56 +80,60 @@ import NoiseTexture from "../components/ui/NoiseTexture.astro";
     const nameSpan = h1El?.querySelector<HTMLElement>(".gradient-text");
     if (nameSpan) {
       gsap.set(nameSpan, { opacity: 0, y: 30 });
-      tl.to(nameSpan, { opacity: 1, y: 0, duration: 0.9, ease: "power4.out" }, 0.65);
+      tl.to(
+        nameSpan,
+        { opacity: 1, y: 0, duration: 0.9, ease: "power4.out" },
+        0.65,
+      );
     }
 
-    // Subtitle — fade + slide up
     if (subtitleEl) {
       gsap.set(subtitleEl, { opacity: 0, y: 22 });
       tl.to(subtitleEl, { opacity: 1, y: 0, duration: 0.75, ease }, 1.05);
     }
 
-    // CTAs — fade up stagger
     if (ctas) {
       const btns = ctas.querySelectorAll("a");
       gsap.set(btns, { opacity: 0, y: 18 });
-      tl.to(btns, { opacity: 1, y: 0, duration: 0.6, stagger: 0.12, ease }, 1.25);
+      tl.to(
+        btns,
+        { opacity: 1, y: 0, duration: 0.6, stagger: 0.12, ease },
+        1.25,
+      );
     }
 
-    // Scroll indicator — pure fade
     if (scroll) {
       gsap.set(scroll, { opacity: 0 });
       tl.to(scroll, { opacity: 1, duration: 0.7 }, 1.55);
     }
   })();
 
-  // ─────────────────────────────────────────
-  // Paso G: Section title clip-reveal on scroll
-  // Wraps each title in an overflow:hidden container for a masked slide-up
-  // ─────────────────────────────────────────
-  document.querySelectorAll<HTMLElement>(".section-title").forEach((titleEl) => {
-    // Skip if already wrapped (language switcher re-runs)
-    if (titleEl.dataset.splitDone) return;
-    titleEl.dataset.splitDone = "1";
+  document
+    .querySelectorAll<HTMLElement>(".section-title")
+    .forEach((titleEl) => {
+      if (titleEl.dataset.splitDone) return;
+      titleEl.dataset.splitDone = "1";
 
-    const inner = document.createElement("span");
-    inner.style.cssText = "display:block;";
-    inner.innerHTML = titleEl.innerHTML;
-    titleEl.style.overflow = "hidden";
-    titleEl.style.display  = "block";
-    titleEl.innerHTML = "";
-    titleEl.appendChild(inner);
+      const inner = document.createElement("span");
+      inner.style.cssText = "display:block;";
+      inner.innerHTML = titleEl.innerHTML;
+      titleEl.style.overflow = "hidden";
+      titleEl.style.display = "block";
+      titleEl.innerHTML = "";
+      titleEl.appendChild(inner);
 
-    gsap.set(inner, { y: "100%" });
-    gsap.to(inner, {
-      y: "0%", duration: 0.9, ease: "power3.out",
-      scrollTrigger: {
-        trigger: titleEl,
-        start: "top 89%",
-        toggleActions: "play none none none",
-      },
+      gsap.set(inner, { y: "100%" });
+      gsap.to(inner, {
+        y: "0%",
+        duration: 0.9,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: titleEl,
+          start: "top 89%",
+          toggleActions: "play none none none",
+        },
+      });
     });
-  });
 
   // ─────────────────────────────────────────
   // Parallax on scroll
@@ -135,7 +148,7 @@ import NoiseTexture from "../components/ui/NoiseTexture.astro";
         l.style.transform = `translateY(${sy * speed}px)`;
       });
     },
-    { passive: true }
+    { passive: true },
   );
 
   // ─────────────────────────────────────────
@@ -178,32 +191,64 @@ import NoiseTexture from "../components/ui/NoiseTexture.astro";
   // Section headers — subtitle then title
   // ─────────────────────────────────────────
   document.querySelectorAll<HTMLElement>(".section-subtitle").forEach((sub) => {
-    gsap.fromTo(sub,
+    gsap.fromTo(
+      sub,
       { opacity: 0, y: 16 },
       {
-        opacity: 1, y: 0, duration: 0.55, ease,
-        scrollTrigger: { trigger: sub, start: "top 87%", toggleActions: "play none none none" },
-      }
+        opacity: 1,
+        y: 0,
+        duration: 0.55,
+        ease,
+        scrollTrigger: {
+          trigger: sub,
+          start: "top 87%",
+          toggleActions: "play none none none",
+        },
+      },
     );
   });
 
   // ─────────────────────────────────────────
   // Timeline items — alternate left / right
   // ─────────────────────────────────────────
-  document.querySelectorAll<HTMLElement>(".timeline-item-left").forEach((el) => {
-    gsap.fromTo(el,
-      { opacity: 0, x: -48 },
-      { opacity: 1, x: 0, duration: 0.75, ease,
-        scrollTrigger: { trigger: el, start: "top 88%", toggleActions: "play none none none" } }
-    );
-  });
-  document.querySelectorAll<HTMLElement>(".timeline-item-right").forEach((el) => {
-    gsap.fromTo(el,
-      { opacity: 0, x: 48 },
-      { opacity: 1, x: 0, duration: 0.75, ease,
-        scrollTrigger: { trigger: el, start: "top 88%", toggleActions: "play none none none" } }
-    );
-  });
+  document
+    .querySelectorAll<HTMLElement>(".timeline-item-left")
+    .forEach((el) => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, x: -48 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.75,
+          ease,
+          scrollTrigger: {
+            trigger: el,
+            start: "top 88%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+    });
+  document
+    .querySelectorAll<HTMLElement>(".timeline-item-right")
+    .forEach((el) => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, x: 48 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.75,
+          ease,
+          scrollTrigger: {
+            trigger: el,
+            start: "top 88%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+    });
 
   // ─────────────────────────────────────────
   // Skill bars
@@ -222,7 +267,7 @@ import NoiseTexture from "../components/ui/NoiseTexture.astro";
           start: "top 90%",
           toggleActions: "play none none reset",
         },
-      }
+      },
     );
   });
 
@@ -247,7 +292,11 @@ import NoiseTexture from "../components/ui/NoiseTexture.astro";
     // skip stagger-item cards (handled by stagger-cards above)
     if (card.classList.contains("stagger-item")) return;
     gsap.from(card, {
-      opacity: 0, y: 30, scale: 0.97, duration: 0.7, ease,
+      opacity: 0,
+      y: 30,
+      scale: 0.97,
+      duration: 0.7,
+      ease,
       delay: i * 0.05,
       scrollTrigger: {
         trigger: card,
@@ -262,28 +311,40 @@ import NoiseTexture from "../components/ui/NoiseTexture.astro";
   // ─────────────────────────────────────────
   const contactForm = document.getElementById("contact-form");
   if (contactForm) {
-    const fields = contactForm.querySelectorAll<HTMLElement>(".form-input, .btn-primary");
-    gsap.fromTo(fields,
+    const fields = contactForm.querySelectorAll<HTMLElement>(
+      ".form-input, .btn-primary",
+    );
+    gsap.fromTo(
+      fields,
       { opacity: 0, y: 20 },
       {
-        opacity: 1, y: 0, duration: 0.55, stagger: 0.08, ease,
-        scrollTrigger: { trigger: contactForm, start: "top 85%", toggleActions: "play none none none" },
-      }
+        opacity: 1,
+        y: 0,
+        duration: 0.55,
+        stagger: 0.08,
+        ease,
+        scrollTrigger: {
+          trigger: contactForm,
+          start: "top 85%",
+          toggleActions: "play none none none",
+        },
+      },
     );
   }
 
   // ─────────────────────────────────────────
   // Contact form submit handler
   // ─────────────────────────────────────────
-  const form = document.getElementById("contact-form") as HTMLFormElement | null;
-  const btn  = document.getElementById("submit-btn")   as HTMLButtonElement | null;
+  const form = document.getElementById(
+    "contact-form",
+  ) as HTMLFormElement | null;
+  const btn = document.getElementById("submit-btn") as HTMLButtonElement | null;
 
   form?.addEventListener("submit", (e) => {
     e.preventDefault();
     if (!btn) return;
     const orig = btn.innerHTML;
-    btn.innerHTML =
-      `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Sent!</span>`;
+    btn.innerHTML = `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Sent!</span>`;
     btn.style.background = "var(--color-sage)";
     btn.disabled = true;
     gsap.from(btn, { scale: 0.92, duration: 0.3, ease: "back.out(2)" });

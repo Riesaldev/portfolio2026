@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import "@fontsource/cormorant-garamond/400-italic.css";
+@import "@fontsource/cormorant-garamond/600-italic.css";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -61,23 +63,6 @@
   font-weight: 300 700;
   font-display: swap;
   src: url("https://fonts.gstatic.com/s/dmsans/v15/rP2Hp2ywxg089UriCZ2IHTWEBlwu8Q.woff2") format("woff2");
-}
-
-/* ── Cormorant Garamond — italic 400, 600 ── */
-@font-face {
-  font-family: "Cormorant Garamond";
-  font-style: italic;
-  font-weight: 400;
-  font-display: swap;
-  src: url("https://fonts.gstatic.com/s/cormorantgaramond/v16/co3YmX5slCNuHLi8bLeY9MK7whWMhyjQAllvuQWJ5heb_w.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: "Cormorant Garamond";
-  font-style: italic;
-  font-weight: 600;
-  font-display: swap;
-  src: url("https://fonts.gstatic.com/s/cormorantgaramond/v16/co3WmX5slCNuHLi8bLeY9MK7whWMhyjornFLsS6V7wx_.woff2") format("woff2");
 }
 
 @layer base {

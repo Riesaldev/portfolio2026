@@ -7,7 +7,6 @@ export default function LanguageSwitcher() {
   const [language, setLanguage] = useState("en");
 
   useEffect(() => {
-    // Check for saved language preference
     const savedLang = localStorage.getItem("language") || "en";
     setLanguage(savedLang);
     updateLanguage(savedLang);
@@ -22,7 +21,6 @@ export default function LanguageSwitcher() {
       }
     });
 
-    // Update placeholder text
     const inputs = document.querySelectorAll(
       "input[placeholder], textarea[placeholder]",
     );

@@ -18,32 +18,22 @@
 </div>
 
 <script>
-  (function initToolsPhysics() {
-    function loadMatter(cb: () => void) {
-      if ((window as any).Matter) {
-        cb();
-        return;
-      }
-      var s = document.createElement("script");
-      s.src =
-        "https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js";
-      s.onload = cb;
-      document.head.appendChild(s);
-    }
+  import Matter from "matter-js";
 
+  (function initToolsPhysics() {
     function setup() {
       var wrap = document.getElementById("tools-physics-wrap");
       var canvas = document.getElementById(
         "tools-canvas",
       ) as HTMLCanvasElement | null;
-      if (!wrap || !canvas || !(window as any).Matter) return;
+      if (!wrap || !canvas) return;
 
       var W = wrap.offsetWidth;
       var H = wrap.offsetHeight || 480;
       canvas.width = W;
       canvas.height = H;
       var ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
-      var M = (window as any).Matter;
+      var M = Matter;
 
       var engine = M.Engine.create({ gravity: { y: 0.5 } });
       var world = engine.world;
@@ -129,13 +119,6 @@
       M.Composite.add(world, pillBodies.concat(balls).concat(walls));
 
       var mouse = M.Mouse.create(canvas);
-      canvas.addEventListener(
-        "wheel",
-        function (e: Event) {
-          e.preventDefault();
-        },
-        { passive: false },
-      );
 
       var mc = M.MouseConstraint.create(engine, {
         mouse: mouse,
@@ -265,15 +248,12 @@
     }
 
     function run() {
-      var go = function () {
-        loadMatter(function () {
-          requestAnimationFrame(setup);
-        });
-      };
       if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", go);
+        document.addEventListener("DOMContentLoaded", () =>
+          requestAnimationFrame(setup),
+        );
       } else {
-        go();
+        requestAnimationFrame(setup);
       }
     }
     run();
