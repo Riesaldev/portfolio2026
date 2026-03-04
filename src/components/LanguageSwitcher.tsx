@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 
+const gb= "<img src=\"https://flagsapi.com/GB/shiny/64.png\">";
+const se = "<img src=\"https://flagsapi.com/SE/shiny/64.png\">";
+
 export default function LanguageSwitcher() {
   const [language, setLanguage] = useState("en");
 
@@ -41,13 +44,10 @@ export default function LanguageSwitcher() {
   return (
     <button
       onClick={toggleLanguage}
-      className="px-3 h-10 rounded-full bg-white dark:bg-gray-800 shadow hover:shadow-md transition-all duration-300 flex items-center gap-2 hover:scale-105"
+      className="p-1 w-8 h-8 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
       aria-label={language === "en" ? "Switch to Swedish" : "Switch to English"}
     >
-      <span className="text-2xl">{language === "en" ? "🇬🇧" : "🇸🇪"}</span>
-      <span className="font-medium text-gray-700 dark:text-gray-300 uppercase">
-        {language === "en" ? "EN" : "SV"}
-      </span>
+      <span className="w-8 h-8" dangerouslySetInnerHTML={{ __html: language === "en" ? gb : se }}></span>
     </button>
   );
 }

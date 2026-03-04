@@ -135,11 +135,11 @@
 
       <!-- Alternative contact methods -->
       <div
-        class="mt-10 pt-8 flex flex-col gap-6 items-center justify-center"
+        class="mt-2 flex flex-col gap-2 items-center justify-center"
         style="border-top:1px solid var(--color-cream-dark);"
       >
         <p
-          class="text-center text-sm dark:text-gray-400 mb-6 lang-text"
+          class="text-center text-sm dark:text-gray-400 mb-2 lang-text"
           style="color:var(--color-charcoal-light);"
           data-en="Or reach me directly"
           data-sv="Eller nå mig direkt"
@@ -148,7 +148,7 @@
         </p>
 
         <div
-          class="flex flex-col sm:flex-row items-center justify-center gap-4"
+          class="flex flex-col sm:flex-row items-center justify-center gap-2"
         >
           <a
             href="https://www.linkedin.com/in/maria-i-begueri/"
@@ -167,7 +167,7 @@
           </a>
 
           <a
-            href="mailto:maria.begueri@email.com"
+            href="mailto:begueri.vitale@gmail.com"
             class="flex items-center gap-3 px-5 py-3 rounded-full transition-all hover:-translate-y-0.5"
             style="background:var(--color-cream);color:var(--color-charcoal);"
             onmouseover="this.style.background='var(--color-gold)';this.style.color='white';"
@@ -192,3 +192,93 @@
     </div>
   </div>
 </section>
+
+<script>
+  import emailjs from "@emailjs/browser";
+
+  const SERVICE_ID = import.meta.env.PUBLIC_EMAILJS_SERVICE_ID;
+  const TEMPLATE_ID = import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID;
+  const PUBLIC_KEY = import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY;
+
+  const form = document.getElementById("contact-form") as HTMLFormElement;
+  const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement;
+
+  // Evitar registrar el listener más de una vez
+  if (form && !form.dataset.listenerAttached) {
+    form.dataset.listenerAttached = "true";
+
+    const ORIGINAL_BTN = `
+      <span class="lang-text" data-en="Send Message" data-sv="Skicka Meddelande">Send Message</span>
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+      </svg>
+    `;
+
+    const resetBtn = () => {
+      submitBtn.disabled = false;
+      submitBtn.style.background = "";
+      submitBtn.style.color = "";
+      submitBtn.innerHTML = ORIGINAL_BTN;
+    };
+
+    form.addEventListener("submit", async (e: Event) => {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      if (!submitBtn || submitBtn.disabled) return;
+
+      // 1. Sending...
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `
+        <svg class="w-4 h-4 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+        </svg>
+        <span class="lang-text" data-en="Sending..." data-sv="Skickar...">Sending...</span>
+      `;
+
+      try {
+        const formData = new FormData(form);
+
+        await emailjs.send(
+          SERVICE_ID,
+          TEMPLATE_ID,
+          {
+            name: formData.get("name"),
+            email: formData.get("email"),
+            company: formData.get("company") || "N/A",
+            subject: formData.get("subject"),
+            message: formData.get("message"),
+          },
+          PUBLIC_KEY,
+        );
+
+        // 2. Message Sent!
+        submitBtn.style.background = "var(--color-gold)";
+        submitBtn.style.color = "white";
+        submitBtn.innerHTML = `
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+          </svg>
+          <span class="lang-text" data-en="Message Sent!" data-sv="Skickat!">Message Sent!</span>
+        `;
+        form.reset();
+
+        // 3. Restaurar tras 4s
+        setTimeout(resetBtn, 4000);
+
+      } catch (error) {
+        console.error("Error al enviar:", error);
+
+        submitBtn.style.background = "#ef4444";
+        submitBtn.style.color = "white";
+        submitBtn.innerHTML = `
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+          <span class="lang-text" data-en="Error, try again" data-sv="Fel, försök igen">Error, try again</span>
+        `;
+
+        setTimeout(resetBtn, 4000);
+      }
+    });
+  }
+</script>

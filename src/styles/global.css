@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   /* Colors */
   --color-coral: #e07a5f;
@@ -83,6 +85,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    color-scheme: light;
     /* Prevent tap flash on iOS */
     -webkit-tap-highlight-color: transparent;
   }
@@ -140,6 +143,7 @@ body {
 }
 
 .dark body {
+  color-scheme: dark;
   background-color: #1a1a1a;
 }
 
