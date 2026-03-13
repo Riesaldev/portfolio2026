@@ -254,7 +254,7 @@
           SERVICE_ID,
           TEMPLATE_ID,
           {
-            to: "begueri.vitale@gmail.com",
+            to: import.meta.env.PUBLIC_EMAILJS_TO_EMAIL,
             name: formData.get("name"),
             email: formData.get("email"),
             company: formData.get("company") || "N/A",
