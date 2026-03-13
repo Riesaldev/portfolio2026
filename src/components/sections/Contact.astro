@@ -249,6 +249,17 @@
       try {
         const formData = new FormData(form);
 
+        console.log({
+          SERVICE_ID,
+          TEMPLATE_ID,
+          PUBLIC_KEY,
+          to: import.meta.env.PUBLIC_EMAILJS_TO_EMAIL,
+          name: formData.get("name"),
+          email: formData.get("email"),
+          company: formData.get("company") || "N/A",
+          subject: formData.get("subject"),
+          message: formData.get("message"),
+        });
         await emailjs.send(
           SERVICE_ID,
           TEMPLATE_ID,
